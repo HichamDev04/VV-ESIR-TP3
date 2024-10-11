@@ -15,3 +15,19 @@ Include the improved test code in this file.
 
 ## Answer
 
+Les règles PMD que nous avons identifiées sont :
+
+- **JUnitAssertionsShouldIncludeMessage** :
+Il survient lorsque des assertions sont écrites sans message d'explication. Cela complique le débogage, car lorsque plusieurs assertions échouent, il est difficile de savoir laquelle a causé l'échec.
+
+- **JUnitTestsShouldIncludeAssert** :
+Il correspond à des tests JUnit qui ne contiennent pas d’assertions, ce qui les rend redondants ou inutiles. Nous avons couvert en cours l’importance d’inclure au moins une assertion dans chaque test unitaire, car un test sans assertion ne vérifie rien.
+
+- **TestClassWithoutTestCases** :
+Cette règle PMD détecte les classes qui sont censées contenir des tests (ex: Test.java) mais qui n’ont aucun cas de test défini.
+
+- **UseAssertEqualsInsteadOfAssertTrue** :
+Ce test smell correspond à une mauvaise utilisation de l'assertion assertTrue() là où une comparaison entre deux valeurs (assertEquals()) aurait été plus appropriée. 
+
+
+Nous avons testé le projet commons-cli 
