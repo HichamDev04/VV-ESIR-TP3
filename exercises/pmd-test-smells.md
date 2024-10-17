@@ -23,8 +23,8 @@ Il survient lorsque des assertions sont écrites sans message d'explication. Cel
 - **JUnitTestsShouldIncludeAssert** :
 Il correspond à des tests JUnit qui ne contiennent pas d’assertions, ce qui les rend redondants ou inutiles. Nous avons couvert en cours l’importance d’inclure au moins une assertion dans chaque test unitaire, car un test sans assertion ne vérifie rien.
 
-- **TestClassWithoutTestCases** :
-Cette règle PMD détecte les classes qui sont censées contenir des tests (ex: Test.java) mais qui n’ont aucun cas de test défini.
+- **UnnecessaryBooleanAssertion** :
+Cette règle PMD signale les tests qui vérifient des choses évidentes comme assertTrue(true) ou assertFalse(false). Ces tests n'apportent rien, car ils réussissent toujours.
 
 - **UseAssertEqualsInsteadOfAssertTrue** :
 Ce test smell correspond à une mauvaise utilisation de l'assertion assertTrue() là où une comparaison entre deux valeurs (assertEquals()) aurait été plus appropriée. 
