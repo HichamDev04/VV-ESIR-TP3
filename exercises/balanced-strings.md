@@ -25,4 +25,18 @@ Write below the actions you took on each step and the results you obtained.
 Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to complete this exercise.
 
 ## Answer
-1. ![tableau](/exercises/tableau-input-space-partitionning.png)
+1. L'input space partitionning (ISP) partitionne l'ensemble du domaine en sous-ensemble tel que l'intersection de chacun soit vide mais que l'union de tous couvrent l'entièreté du domaine. Ci-dessous les sous-ensembles choisis. Pour la suite, dans les tests, nous choisirons une seule valeur de chaque block.
+  ![tableau](/exercises/tableau-input-space-partitionning.png)
+
+2. Pour augmenter la couverture, nous ajoutons des tests d'un même block en modifiant les symboles utilisés et la longueur de la chaîne de caractère.
+
+3. Dans notre code nous avons un prédicat qui utilise plus de 2 opérateurs booléens. Nous devons donc vérifier si nous couvrons toutes les combinaisons de conditions possibles. Par exemple, nous avons parfois plusieurs "||" ou "&&". Dans ce cas, nous devons couvrir les choix de base en testant chaque combinaison de vrai/faux.
+Le code ci-dessous teste à la fois l'ordre et la correspondance des symboles.
+```
+@Test
+void testComplexConditions() {
+    assertFalse(isBalanced("{[)}")); 
+}
+```
+
+4. 
