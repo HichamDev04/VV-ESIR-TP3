@@ -69,3 +69,6 @@ En examinant le code des méthodes comme `pop`, `peek` et `push`, nous avons ide
 Nous avons également veillé à ce que les conditions dans `push` soient correctement testées, en tenant compte de divers cas limites, comme l'ajout d'un élément dans un tas vide ou l'ajout d'éléments dans un ordre décroissant pour vérifier le maintien de la propriété de tas.
 
 Ces nouveaux tests ont contribué à améliorer la robustesse de notre suite de tests, en s'assurant que chaque condition logique est bien couverte. Comme l'indique le rapport JaCoCo, nous avons une couverture des instructions de **92%**, avec seulement **14 instructions manquantes** sur **199** et une couverture de branches de **81%**, ce qui montre que la plupart des chemins logiques dans le code sont couverts par nos tests.
+
+
+**4.** 
