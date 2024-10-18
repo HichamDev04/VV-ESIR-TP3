@@ -65,4 +65,14 @@ Enfin, la méthode `compareTo` doit être testée en fonction de la comparaison 
 
 Certaines caractéristiques, comme l’**année**, le **mois** et le **jour**, sont communes à plusieurs méthodes, notamment `isValidDate`, `nextDate`, `previousDate`, et `compareTo`. Cela signifie que les blocs définis pour ces caractéristiques peuvent être réutilisés dans plusieurs méthodes afin d'optimiser notre ensemble de tests et d’éviter les redondances.
 
-2. 
+
+2. Au départ, la couverture du code était de 0%, car aucun test n'avait été implémenté. Cela signifiait que les méthodes de la classe `Date` n'étaient pas testées et donc que le code n'était pas validé.
+
+Après avoir implémenté les méthodes essentielles (`isValidDate`, `isLeapYear`, `nextDate`, `previousDate`, `compareTo`), nous avons rédigé des cas de test unitaires pour chacune. Cependant, les premiers tests étaient incomplets et plusieurs erreurs, telles que des assertions incorrectes et des exceptions non levées comme prévu, ont été détectées.
+
+Les résultats des premières exécutions de tests indiquaient toujours une couverture partielle. Par exemple, les méthodes `compareTo` et `isLeapYear` avaient des assertions échouées, et plusieurs lignes critiques n'étaient pas couvertes. Après des corrections et l'ajout de cas de test supplémentaires pour les scénarios limites (comme la gestion des dates en fin d'année et les années bissextiles), la couverture de test a augmenté de manière significative.
+
+Selon les résultats de JaCoCo, nous avons obtenu une couverture des instructions de **96%** et une couverture des branches de **80%**, ce qui est un bon niveau de test pour ce projet. Nous avons donc décidé de nous contenter de ces résultats pour l’instant, sans ajouter de nouveaux tests. Ces tests couvrant déjà la plupart des scénarios critiques liés aux dates, comme les années bissextiles et les comparaisons de dates.
+
+
+3. 
