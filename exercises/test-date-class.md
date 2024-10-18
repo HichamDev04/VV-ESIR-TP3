@@ -75,4 +75,11 @@ Les résultats des premières exécutions de tests indiquaient toujours une couv
 Selon les résultats de JaCoCo, nous avons obtenu une couverture des instructions de **96%** et une couverture des branches de **80%**, ce qui est un bon niveau de test pour ce projet. Nous avons donc décidé de nous contenter de ces résultats pour l’instant, sans ajouter de nouveaux tests. Ces tests couvrant déjà la plupart des scénarios critiques liés aux dates, comme les années bissextiles et les comparaisons de dates.
 
 
-3. 
+3. Nous avons utilisé le **Base Choice Coverage (BCC)** pour évaluer la couverture des tests sur les prédicats complexes présents dans notre méthode `isValidDate` afin de garantir que chaque chemin possible à travers la logique est testé.
+
+C'est en appliquant le BCC que nous avons ajouté des tests comme celui du 29 février dans une année non bissextile, afin de vérifier que la méthode rejette correctement une date invalide dans ce contexte, ainsi que celui du 31 avril, un mois qui n’a que 30 jours, pour garantir que la méthode identifie bien cette date comme invalide. Le BCC nous a donc guidés pour tester des combinaisons telles que **année non bissextile avec jour supérieur à 28 en février** et **mois avec 30 jours et jour supérieur à 30**, des scénarios critiques pour la validation des dates.
+
+Grâce à l'ajout de ces cas, nous avons vu une amélioration de la couverture des branches. Comme le montre notre rapport de couverture, nous avons maintenant une couverture de **96 %** pour les instructions et de **87 %** pour les branches. Cette augmentation est significative car elle montre que nos nouveaux tests ont contribué à couvrir les chemins logiques critiques qui n'étaient pas pris en compte auparavant. Nous avons ainsi satisfait les exigences du BCC et amélioré la robustesse de notre code.
+
+
+4. GG
