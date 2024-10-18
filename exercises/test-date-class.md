@@ -53,3 +53,16 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
+1. En utilisant l’Input Space Partitioning pour définir un ensemble d'entrées de test pour chaque méthode de la classe Date, nous voulons identifier les différentes caractéristiques qui influencent le comportement de chacune de ces méthodes, puis diviser ces caractéristiques en blocs correspondant à des plages de valeurs ou à des cas spécifiques.
+
+Pour la méthode `isValidDate`, les caractéristiques principales sont le **jour**, le **mois** et l’**année**. Nous avons identifié plusieurs blocs pour chaque caractéristique : par exemple, pour le jour, il existe des jours valides (en fonction du mois et de l'année) et des jours invalides (comme un jour inférieur à 1 ou supérieur au nombre de jours du mois). De même, les blocs pour le mois incluent des mois valides (1 à 12) et des mois invalides. Enfin, pour l'année, nous devons prendre en compte les années valides ainsi que des années limites ou inhabituelles, comme l’année 0 ou des années très grandes.
+
+Concernant la méthode `isLeapYear`, la seule caractéristique à prendre en compte est l’**année**. Le partitionnement ici se fait en fonction de la nature bissextile ou non de l’année. Les blocs identifiés incluent des années divisibles par 4 mais pas par 100 (années bissextiles classiques), des années divisibles par 400 (également bissextiles), ainsi que des années non bissextiles. 
+
+Les méthodes `nextDate` et `previousDate` partagent des caractéristiques communes avec `isValidDate`, à savoir le **jour**, le **mois** et l’**année**. Ici, nous devons tester des cas particuliers comme les transitions de fin de mois (par exemple, du 31 décembre au 1er janvier pour nextDate, ou du 1er janvier au 31 décembre pour previousDate) pour nous assurer que les dates limites et les transitions d’années sont bien gérées par ces méthodes.
+
+Enfin, la méthode `compareTo` doit être testée en fonction de la comparaison entre deux dates. Les caractéristiques à considérer incluent le **jour**, le **mois** et l’**année** pour la date courante et pour la date à comparer. Nous avons donc besoin de blocs pour des dates identiques, des dates antérieures, et des dates ultérieures, afin de couvrir tous les scénarios possibles lors de la comparaison entre deux instances de Date.
+
+Certaines caractéristiques, comme l’**année**, le **mois** et le **jour**, sont communes à plusieurs méthodes, notamment `isValidDate`, `nextDate`, `previousDate`, et `compareTo`. Cela signifie que les blocs définis pour ces caractéristiques peuvent être réutilisés dans plusieurs méthodes afin d'optimiser notre ensemble de tests et d’éviter les redondances.
+
+2. 
