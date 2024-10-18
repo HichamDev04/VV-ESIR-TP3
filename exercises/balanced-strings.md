@@ -39,4 +39,30 @@ void testComplexConditions() {
 }
 ```
 
-4. 
+4. Nous avons utiliser PIT pour évaluer la suite des tests dont nous disposons. Tout d'abord 18 mutations ont été générées et 18 ont été tuées ce qui montre un score de mutation de 100%. Nous avons donc une bonne couverture. Il n'y a alors pas besoin d'ajouter de tests supplémentaires.
+```
+>> Generated 18 mutations Killed 18 (100%)
+```
+PIT a produit 3 mutants BooleanTrueReturnValsMutator (remplace true par false), 2 mutants BooleanFalseReturnValsMutator (remplace false par true) et 13 NegateConditionalsMutator (inverse conditions logiques en remplaçant par exemple "==" par "!=" ou "<" par ">=").
+```
+> org.pitest.mutationtest.engine.gregor.mutators.BooleanTrueReturnValsMutator
+>> Generated 3 Killed 3 (100%)
+> KILLED 3 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.BooleanFalseReturnValsMutator
+>> Generated 2 Killed 2 (100%)
+> KILLED 2 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator
+>> Generated 13 Killed 13 (100%)
+> KILLED 13 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+```
+
+
