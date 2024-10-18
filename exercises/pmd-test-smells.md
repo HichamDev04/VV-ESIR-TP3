@@ -30,4 +30,34 @@ Cette règle PMD signale les tests qui vérifient des choses évidentes comme as
 Ce test smell correspond à une mauvaise utilisation de l'assertion assertTrue() là où une comparaison entre deux valeurs (assertEquals()) aurait été plus appropriée. 
 
 
-Nous avons testé le projet commons-cli 
+Nous avons testé le projet commons-cli en utilisant PMD à l'aide de la règle JUnitTestsShouldIncludeAssert. Pour ce faire, nous avons utilisé la commande : 
+```bash
+pmd check -d commons-collections/src/test/java/org/apache/commons/collections4 -R category/java/bestpractices.xml/JUnitTestsShouldIncludeAssert -f text
+```
+Après avoir exécuté la commande PMD pour analyser les tests JUnit dans le projet **commons-cli**, nous avons constaté que plusieurs tests ne comportaient aucunes assertions, ce qui les rend inutiles car on ne peut pas vérifier si les conditions de test ont été satisfaites. Les résultats obtenus ont révélé que des classes comme `PredicateUtilsTest` ou `AbstractBidiMapTest` contenaient des méthodes de test sans aucune vérification des résultats attendus.
+
+La solution générale à ce type de problème consiste à s'assurer que chaque méthode de test inclut au moins une assertion pour vérifier le comportement du code testé. Par exemple, si une méthode doit renvoyer une certaine valeur ou modifier un objet de manière attendue, une assertion comme `assertEquals(expectedValue, actualValue)` doit être ajoutée pour valider le résultat. Ainsi, nous pourrons garantir que le test échoue lorsque les conditions ne sont pas remplies.
+
+Dans le cas du fichier BasicParserTest.java, bien que certaines méthodes soient désactivées (avec @Disabled), il est important de s'assurer que, lorsque ces tests seront activés, des assertions soient intégrées afin de valider le comportement attendu du BasicParser. Par exemple, pour tester le traitement correct d'une option avec un nom long, on pourrait ajouter une assertion telle que :
+```java
+@Test
+public void testShortOptionConcatenatedQuoteHandling() throws Exception {
+    // Configuration des arguments pour tester l'option courte avec gestion des guillemets
+    String[] args = new String[] { "-a\"quoted value\"" };
+
+    // Création d'une instance d'options, ajout de l'option courte 'a'
+    Options options = new Options();
+    options.addOption("a", true, "short option with concatenated quote");
+
+    // Analyse des arguments avec le parser
+    CommandLine cmd = parser.parse(options, args);
+
+    // Vérification que l'option 'a' a bien été reconnue
+    assertTrue(cmd.hasOption("a"));
+
+    // Vérification que la valeur associée à l'option 'a' est bien "quoted value"
+    assertEquals("quoted value", cmd.getOptionValue("a"));
+}
+
+```
+
