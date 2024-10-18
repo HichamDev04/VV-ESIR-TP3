@@ -29,6 +29,40 @@
             </plugin>
 
             <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.6.8</version>
+                <configuration>
+                    <targetClasses>
+                        <param>fr.istic.vv.*</param> <!-- La classe cible à tester -->
+                    </targetClasses>
+                    <targetTests>
+                        <param>fr.istic.vv.*Test</param> <!-- Les classes de test -->
+                    </targetTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.5.2</version>
