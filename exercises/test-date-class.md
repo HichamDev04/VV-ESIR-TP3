@@ -53,7 +53,7 @@ Use the project in [tp3-date](../code/tp3-date) to complete this exercise.
 
 ## Answer
 
-1. En utilisant l’Input Space Partitioning pour définir un ensemble d'entrées de test pour chaque méthode de la classe Date, nous voulons identifier les différentes caractéristiques qui influencent le comportement de chacune de ces méthodes, puis diviser ces caractéristiques en blocs correspondant à des plages de valeurs ou à des cas spécifiques.
+**1.** En utilisant l’Input Space Partitioning pour définir un ensemble d'entrées de test pour chaque méthode de la classe Date, nous voulons identifier les différentes caractéristiques qui influencent le comportement de chacune de ces méthodes, puis diviser ces caractéristiques en blocs correspondant à des plages de valeurs ou à des cas spécifiques.
 
 Pour la méthode `isValidDate`, les caractéristiques principales sont le **jour**, le **mois** et l’**année**. Nous avons identifié plusieurs blocs pour chaque caractéristique : par exemple, pour le jour, il existe des jours valides (en fonction du mois et de l'année) et des jours invalides (comme un jour inférieur à 1 ou supérieur au nombre de jours du mois). De même, les blocs pour le mois incluent des mois valides (1 à 12) et des mois invalides. Enfin, pour l'année, nous devons prendre en compte les années valides ainsi que des années limites ou inhabituelles, comme l’année 0 ou des années très grandes.
 
@@ -66,7 +66,7 @@ Enfin, la méthode `compareTo` doit être testée en fonction de la comparaison 
 Certaines caractéristiques, comme l’**année**, le **mois** et le **jour**, sont communes à plusieurs méthodes, notamment `isValidDate`, `nextDate`, `previousDate`, et `compareTo`. Cela signifie que les blocs définis pour ces caractéristiques peuvent être réutilisés dans plusieurs méthodes afin d'optimiser notre ensemble de tests et d’éviter les redondances.
 
 
-2. Au départ, la couverture du code était de 0%, car aucun test n'avait été implémenté. Cela signifiait que les méthodes de la classe `Date` n'étaient pas testées et donc que le code n'était pas validé.
+**2.** Au départ, la couverture du code était de 0%, car aucun test n'avait été implémenté. Cela signifiait que les méthodes de la classe `Date` n'étaient pas testées et donc que le code n'était pas validé.
 
 Après avoir implémenté les méthodes essentielles (`isValidDate`, `isLeapYear`, `nextDate`, `previousDate`, `compareTo`), nous avons rédigé des cas de test unitaires pour chacune. Cependant, les premiers tests étaient incomplets et plusieurs erreurs, telles que des assertions incorrectes et des exceptions non levées comme prévu, ont été détectées.
 
@@ -75,11 +75,16 @@ Les résultats des premières exécutions de tests indiquaient toujours une couv
 Selon les résultats de JaCoCo, nous avons obtenu une couverture des instructions de **96%** et une couverture des branches de **80%**, ce qui est un bon niveau de test pour ce projet. Nous avons donc décidé de nous contenter de ces résultats pour l’instant, sans ajouter de nouveaux tests. Ces tests couvrant déjà la plupart des scénarios critiques liés aux dates, comme les années bissextiles et les comparaisons de dates.
 
 
-3. Nous avons utilisé le **Base Choice Coverage (BCC)** pour évaluer la couverture des tests sur les prédicats complexes présents dans notre méthode `isValidDate` afin de garantir que chaque chemin possible à travers la logique est testé.
+**3.** Nous avons utilisé le **Base Choice Coverage (BCC)** pour évaluer la couverture des tests sur les prédicats complexes présents dans notre méthode `isValidDate` afin de garantir que chaque chemin possible à travers la logique est testé.
 
 C'est en appliquant le BCC que nous avons ajouté des tests comme celui du 29 février dans une année non bissextile, afin de vérifier que la méthode rejette correctement une date invalide dans ce contexte, ainsi que celui du 31 avril, un mois qui n’a que 30 jours, pour garantir que la méthode identifie bien cette date comme invalide. Le BCC nous a donc guidés pour tester des combinaisons telles que **année non bissextile avec jour supérieur à 28 en février** et **mois avec 30 jours et jour supérieur à 30**, des scénarios critiques pour la validation des dates.
 
 Grâce à l'ajout de ces cas, nous avons vu une amélioration de la couverture des branches. Comme le montre notre rapport de couverture, nous avons maintenant une couverture de **96 %** pour les instructions et de **87 %** pour les branches. Cette augmentation est significative car elle montre que nos nouveaux tests ont contribué à couvrir les chemins logiques critiques qui n'étaient pas pris en compte auparavant. Nous avons ainsi satisfait les exigences du BCC et amélioré la robustesse de notre code.
 
 
-4. GG
+**4.** Nous avons utilisé **PIT** pour évaluer la qualité de notre suite de tests avec le **mutation testing**. Après l’exécution, nous avons obtenu un score de mutation de **86 %**, avec **57 mutations générées**, dont **49 tuées** et **8 mutants survivants**.
+
+Les mutants survivants proviennent principalement du **ConditionalsBoundaryMutator** (4 mutants survivants), du **PrimitiveReturnsMutator** (2 mutants survivants), et du **MathMutator** (2 mutants survivants). Ces mutants modifient des conditions logiques, des retours de valeurs primitives et des opérations mathématiques, mais les tests existants n’ont pas réussi à détecter ces changements. Après analyse, il est probable que ces mutants soient des **mutants équivalents**, c'est-à-dire qu’ils n’ont pas d’impact observable sur le comportement du programme.
+
+Pour améliorer la couverture, nous avons ajouté des tests supplémentaires pour couvrir des combinaisons plus complexes de conditions logiques et renforcer les vérifications sur les valeurs primitives mais ces nouveaux tests n’ont pas changé le score de mutation, ce qui confirme que les mutants restants n'affectent pas le comportement observable du programme.
+
